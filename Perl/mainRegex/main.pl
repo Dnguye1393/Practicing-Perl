@@ -17,14 +17,18 @@ while (my $row = <$fh>) {
   push(@ar,$row);
 }
 close($fh);
-my $regex = "o";
+my $regex = "\\w{5,10}";
 ($fullString,$count) = regex::findNum(\@ar,$regex);
 
 
 print "For this text: ", "\n", $fullString , "\n" ;
 print "Number of ", $regex, " found: ", $count, "\n";
 
-my $replace = "x";
+my $replace = "K";
 $fullString = regex::replace(\@ar,$regex,$replace);
 print "For this text: ", "\n", $fullString , "\n" ;
 print "Number of ", $regex, " found: ", $count, "\n";
+
+
+my $match = regex::findBegining(\@ar, $replace);
+print "this is what beings with " , $replace , " : \n", $match; 
